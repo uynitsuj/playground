@@ -17,3 +17,10 @@ class fir:
             self._idx = 0
         s = sum(self._prior)
         return (s/ min(self._i,self.width))
+
+    def freq_resp(self, f):
+        if f != 0:
+            out = np.sin(np.pi * f * self.width)/(self.width * np.sin(np.pi * f))
+            return out
+        else:
+            return 1
