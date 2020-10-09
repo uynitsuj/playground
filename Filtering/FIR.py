@@ -7,7 +7,8 @@ class fir:
         self._i = 0
         self._prior = np.zeros([self.width],dtype=np.float64)
 
-    def apply(self, x):
+#FIR simple moving average application
+    def apply_sma(self, x):
         self._i+=1
         self._prior = np.insert(self._prior, int(self._idx), x)
         self._prior = np.delete(self._prior, self.width)
