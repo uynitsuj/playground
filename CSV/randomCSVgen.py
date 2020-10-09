@@ -14,6 +14,6 @@ subprocess.call('touch '+filename, shell=True)
 with open(filename, 'w') as csvfile:
     spamwriter = csv.writer(csvfile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
 
-    for x in range(0,50):
+    for x in range(0,300):
             y = np.random.randint(50, 75)
             spamwriter.writerow([x, y])
