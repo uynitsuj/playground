@@ -1,0 +1,187 @@
+EECS 280 Learning Objectives
+Memory Models/Function Calls and the Stack:
+Understanding automatic(local)/static/dynamic storage (identify code sequences)
+Being able to correctly draw a memory diagram
+Define the difference between a variable and an object
+Be able to define the difference between compile time and runtime
+
+Testing and Procedural Abstraction
+Explain the purpose of procedural abstraction and why it is valuable
+Design/develop ~thorough~ test cases
+Identify bugs in code and identify how to fix the bug
+Translate problems into code (and vice versa)/ Explain what a given code snippet does
+
+Pointers
+Understand that the value of a pointer is a memory address
+Use pointers to access elements within an array
+Understand difference between traversal by pointer and traversal by index
+Recognize and correct common pointer errors
+Explain actions that can cause undefined behavior or runtime error (not initializing pointer)
+
+Arrays
+Be able to explain similarities and differences of traversal by index and traversal by pointers
+understand how arrays look in memory
+Use traversal by index
+Use traversal by pointer when working with arrays
+Be able to explain array decay
+Detect when array decay happens in a block of code
+Understand that arrays are not class-type objects and they are basically pointers
+
+Compound Objects and ADTs
+Students should be able to define and create an ADT (e.g. define constructors properly, etc.)
+Translate a problem into ADT
+~Understand~ motivation when using ADTs
+More examples where students build definition of an ADT from scratch
+Identify when interface has been broken
+Be able to use the scope resolution operator properly
+Understand how to access members of a class type object using the dot operator
+Understand how to access members of a pointer to a class type object using the arrow operator
+
+Strings 
+Apply array operations to c-strings (indexing, dereferencing, pointer arithmetic)
+Identify what aspects of a c-strings make it different from a *regular* array
+C-strings are treated as a whole when printed as opposed to arrays printing addresses
+Null character is not part of length of c-string but included as an element of the underlying array
+Understand the null terminating character
+Must be at the end of all c-strings for them to be valid
+Causes c-strings to stop printing to cout
+Develop code making use of cstring library functions to perform operations on C-Style strings (including strlen, strcmp, etc.)
+Explain the difference between C-Style and C++-Style strings
+
+Streams, and I/O
+Develop programs that make use of command line arguments
+Explain how command line arguments relate to the argc and argv parameters of main
+Be able to use input and output streams to access data in files
+Be able to check if the input/output stream was opened successfully
+
+Const
+Explain why const is used and how it modifies interactions with a variable
+Identify conversions between const and non-const types that would cause compile errors
+Distinguish between a const pointer and a pointer-to-const
+
+Inheritance
+Understand “is-a” relationship between a data type that inherits from another data type
+Identify “is-a” relationships when given two or more data types
+Be able to differentiate between “is-a” (inheritance) and “has-a” (composition) relationships
+Understand access modifiers (public, private, protected)
+Understand the order in which base class constructors and destructors are called in derived types
+
+Polymorphism
+Understand name lookup process
+Identify implicit downcasts and understand why they are prohibited
+Be able to identify overloaded functions 
+Be able to identify overridden functions
+Understand what characterizes an overloaded function and construct one given a description of what it should do
+Understand what characterizes an overridden function and construct one given a description of what it should do
+Understand why we can construct a base class pointer and assign it to the address of a derived class object
+Understand why we use abstract classes and interfaces and how to use them
+Be able to identify an abstract class
+Be able to identify an interface
+Identify pure virtual functions and understand that they make the class abstract
+Be able to write a pure virtual function
+Be able to explain that abstract classes cannot be instantiated, but that abstract class pointers can exist
+Be able to use the ‘virtual’ keyword properly and explain what the ‘virtual’ keyword achieves
+Be able to use the ‘override’ keyword properly and explain what the ‘override’ keyword achieves
+Understand the name lookup process for dynamic binding
+Know what conditions must be necessary for dynamic binding to work and how to implement them
+Understand why we use factory pattern and why it works
+
+Final Exam Material
+Dynamic Memory
+Understand the difference between the stack and the heap
+What the stack and heap look like in memory (memory model)
+Understand how the scope of dynamic memory variables can be controlled
+Identify use of dynamic memory in code
+Understand that the ‘new’ operator allocates space in the heap and evaluates to its address
+Know when the delete operator should be used and how to use it
+Create and use dynamic arrays
+Be able to use the specific delete[] operator when deleting dynamic arrays
+Be able to identify when it is needed to iterate through a dynamic array to delete elements in the array
+Follow the scope of an object and identify where it is created/destroyed (ex. writing ctor and dtor print statements in the correct order)
+Identify and correct dynamic memory errors
+Double free, memory leak, etc.
+Develop code that uses dynamic memory and prevents memory leaks and other errors
+Draw memory diagrams with dynamic memory (drawing the heap)
+Be able to explain RAII, and why using RAII is beneficial
+Develop code that makes use of RAII
+
+The Big Three
+Be able to identify classes which need custom implementations of the big three
+Be able to correctly implement the big three if needed
+Be able to explain the difference between shallow and deep copies
+Be able to explain why destructors should be marked as virtual in classes that make use of inheritance
+Identify errors in big three implementations or shallow copies and how they could cause dynamic memory errors later on
+Understand what the default, compiler generated versions of the big three do
+
+Containers and Templates
+Be able to identify time complexities of insert, find and remove for both Sorted and Unsorted Sets
+Be able to explain an advantage of using templates when defining the interface for a container
+Be able to use templates properly
+Be able to identify various types of containers and each underlying functionality (i.e. some containers have member functions like push_back())
+Be able to use various types of containers when given a problem
+Be able to explain why operator overloading is necessary
+Be able to write an implementation of an operator overload
+
+Recursion
+Be able to identify recursion, tail recursion, tree recursion, and structural recursion problems
+Be able to write a recursive function given a problem
+Break down problem into smaller sub-problems
+Understand how to write a structural recursive function
+Break down data structures into smaller data structures
+Be able to write an appropriate base case given a problem
+Be able to differentiate between the memory complexity of normal linear recursive functions and tail recursive functions
+Be able to draw a memory diagram of the stack given a recursive function call
+Convert iteration into recursion and recursion into iteration
+Understand when to use recursion vs. iteration
+
+BSTs
+Be able to identify the difference in time complexities between removing, inserting, and finding an item in a BST vs an Unsorted Set and a Sorted Set
+Best case, worst case, and average case
+Be able to draw a BST representation in memory with pointers
+Be able to use recursion to implement functions such as insert, find, and height for a BST
+Be able to identify whether the big three is needed for a BST (and why) and properly implement the big three using recursion in a BST interface
+Be able to write preorder and inorder traversals of BSTs
+Be able to identify and explain the stack frame creation/destruction when using recursive functions in a BST
+
+Iterators and Functors
+Be able to traverse through a container with an iterator
+Be able to identify scenarios in which an iterator can be invalidated
+Be able to explain the concept of an end iterator
+Be able to define what a functor is
+Be able to identify at least one advantage in using functors
+Be able to use a functor in code
+Be able to define what a predicate is
+Be able to define what a comparator is
+Be able to write a predicate
+Be able to write a comparator
+Be able to identify that range based for loops are effectively the same as traversal by iterator
+Iterators are meant to provide a standardized interface for traversing through different types of containers
+Know when to dereference an iterator
+Know how to iterate through a container using iterators
+Understand why iterators should not implement the big three, even though they reference to dynamic memory
+Be able to define what a function pointer is
+Be able to use a function pointer in code
+
+Linked Lists
+Be able to identify at least two differences between using a linked list and a vector
+Be able to draw a linked list representation in memory
+Be able to declare a linked list iterator
+Be able to use a linked list iterator
+Be able to define friend classes
+Be able to use friend classes
+Be able to add and delete nodes into the linked list without creating any memory errors
+Perform operations on linked lists without errors (chopping a list, stretching)
+Explain how linked lists are recursive data structures
+Explain why iterators are necessary for traversing a linked list
+Explain why linked lists are better (have faster time complexity) than arrays/vectors for certain operations (removing from the top, middle)
+
+Error Handling and Exceptions
+Be able to explain how throwing an exception affects the flow of a program
+Be able to develop code that accounts for exceptions through the use of try/catch blocks
+Understand and apply inheritance to catching exceptions
+
+Impostor Syndrome
+Be able to identify common characteristics of impostor syndrome
+Be able to identify steps that can be taken to overcome impostor syndrome
+Understand that most individuals feel imposter syndrome at some points in their careers
+Understand that certain groups of individuals are more prone to feeling imposter syndrome through their careers
