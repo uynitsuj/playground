@@ -1,3 +1,7 @@
+#include <cassert>
+#include <iostream>
+using namespace std;
+
 class Base {
     public:
         int x;
@@ -24,3 +28,17 @@ class PrivateDerived: private Base {
     // y is private
     // z is not accessible from PrivateDerived
 };
+
+class Based{
+public:
+    static const int x = 0;
+};
+
+int main(int argc, char const *argv[])
+{
+    cout << Based::x;
+    int a = 2;
+    int g = *(&a);
+    cout << g << endl;
+    return 0;
+}
