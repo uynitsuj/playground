@@ -13,8 +13,9 @@ int main(int argc, char const *argv[])
 
 void split_string(char *dst, const char*src, int pos){
     const char* first = src;
-    for (src+=pos; *src;src++){
-        *dst = *src;
+    const char* f = src;
+    for (f+=pos; *f;f++){
+        *dst = *f;
         dst++;
     }
     for (int i = 0; i<pos; i++){
