@@ -33,9 +33,11 @@ int range(const int * array, int length){
 }
 
 int search(int **arr, int length_outer, int length_inner){
+    int cur_min_range = range(arr[0], length_inner);
     int min = 0;
     for (int i = 1; i< length_outer; i++){
-        if(range(*(arr+i),length_inner) < min){
+        if(range(*(arr+i),length_inner) < cur_min_range){
+            cur_min_range = range(*(arr+i),length_inner);
             min = i;
         }
     }

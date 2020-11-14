@@ -17,6 +17,6 @@ int main(int argc, char const *argv[])
     //ptr1 = ptr2;              ERROR -- compiler sees that ptr2 is pointing to a
                              //          a const object, but ptr1 is not a pointer
                              //          to const
-    
+
     return 0;
 }

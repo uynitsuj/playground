@@ -1,5 +1,5 @@
 
- g++ --std=c++11 -pedantic -g -Wall -Werror p1_library.cpp stats.cpp main.cpp -o main.exe
+g++ --std=c++11 -pedantic -g -Wall -Werror p1_library.cpp stats.cpp main.cpp -o main.exe
 
  
     1. g++ is the C++ compiler we are invoking.
@@ -17,3 +17,5 @@
     7. The arguments -o main.exe tell the compiler to produce the output file main.exe.
 
     8. The remaining three arguments are the source files for our program – p1_library.cpp, stats.cpp, and main.cpp.
+
+g++ --std=c++11 -pedantic -g -Wall -Werror randomcontent.cpp -o randomcontent.exe
