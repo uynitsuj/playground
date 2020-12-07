@@ -1,0 +1,1 @@
+g++ -I /usr/include/eigen3/ main1.cpp -o main1.exe -std=c++11
