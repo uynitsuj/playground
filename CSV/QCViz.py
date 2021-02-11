@@ -42,19 +42,22 @@ class QC:
                 [0,0,1,0],
                 [0,0,0,1]]
     def rotate(self, yaw, pitch, roll):
-        return [[np.cos(yaw)*np.cos(pitch),np.cos(yaw)*np.sin(pitch)*np.sin(roll)-np.sin(yaw)*np.cos(roll),np.cos(yaw)*np.sin(pitch)*np.cos(roll)+np.sin(yaw)*np.sin(roll),0],
-        [np.sin(yaw)*np.cos(pitch),np.sin(yaw)*np.sin(pitch)*np.sin(roll)+np.cos(yaw)*np.cos(roll),np.sin(yaw)*np.sin(pitch)*np.cos(roll)-np.cos(yaw)*np.sin(roll),0],
-        [-np.sin(pitch),np.cos(pitch)*np.sin(roll),np.cos(pitch)*np.cos(roll),0],
+        return [[np.cos(yaw)*np.cos(pitch),
+        np.cos(yaw)*np.sin(pitch)*np.sin(roll)-np.sin(yaw)*np.cos(roll),
+        np.cos(yaw)*np.sin(pitch)*np.cos(roll)+np.sin(yaw)*np.sin(roll),0],
+
+
+        [np.sin(yaw)*np.cos(pitch),
+        np.sin(yaw)*np.sin(pitch)*np.sin(roll)+np.cos(yaw)*np.cos(roll),
+        np.sin(yaw)*np.sin(pitch)*np.cos(roll)-np.cos(yaw)*np.sin(roll),0],
+
+
+        [-np.sin(pitch),
+        np.cos(pitch)*np.sin(roll),
+        np.cos(pitch)*np.cos(roll),0],
         [0,0,0,1]]
 
     def addpoint(self):
-        '''
-        self.pose = np.dot(self.translate(self.pose[0][3], self.pose[1][3]),
-        np.dot(self.rotate(self.yaw, self.pitch, self.roll),
-        np.dot(self.translate(self.dx, self.dy),
-        np.dot(self.rotate(-self.pyaw, -self.ppitch, -self.proll),
-        self.I))))
-        '''
         self.pose = np.dot(self.translate(self.pose[0][3], self.pose[1][3]),
         np.dot(self.rotate(self.yaw, self.pitch, self.roll),
         np.dot(self.translate(self.dx, self.dy),
@@ -86,7 +89,10 @@ class QC:
         for i in range(1,self.data.shape[0]):
             if self.data[i][0] == 'PRX':
                 a+=1
-                self.prx = [float(self.data[i][3]),float(self.data[i][5]),float(self.data[i][7]),float(self.data[i][9])]
+                self.prx = [float(self.data[i][3]),
+                float(self.data[i][5]),
+                float(self.data[i][7]),
+                float(self.data[i][9])]
             if self.data[i][0] == 'IMU':
                 a+=1
                 newTime = float(self.data[i][1])
@@ -107,57 +113,10 @@ class QC:
             if a>=1:
                 self.addpoint()
                 a=0
-                #self.dx = 0.0
-                #self.dy = 0.0
-'''
-map = plt.figure()
-map_ax = Axes3D(map)
-map_ax.autoscale(enable=True, axis='both', tight=True)
 
-# # # Setting the axes properties
-map_ax.set_xlim3d([-1.5, 1.5])
-map_ax.set_ylim3d([-1.5, 1.5])
-map_ax.set_zlim3d([0.0, 1])
-map_ax.set_xlabel('m')
-map_ax.set_ylabel('m')
-map_ax.set_zlabel('m')
-'''
 qc = QC(0,0,0,0,0,0, data)
 qc.core()
-'''
-map_ax.plot(qc.pointset[0],qc.pointset[1],qc.pointset[2])
-xscatter= [row[0] for row in qc.LiDARptset]
-yscatter= [row[1] for row in qc.LiDARptset]
-zscatter= [row[2] for row in qc.LiDARptset]
-map_ax.scatter(xscatter,yscatter,zscatter, marker = 'o', c='b')
-plt.show()
 
-hl, = map_ax.plot3D([0],[0],[0])
-for i in range(1,len(qc.pointset)):
-    map_ax.view_init(24, i)
-    qc.update_line(hl,qc.pointset[i])
-    for d in range(0,4):
-        map_ax.scatter(qc.LiDARptset[i*4+d][0],qc.LiDARptset[i*4+d][1],qc.pointset[i][2],marker='o',c='r')
-    plt.show(block=False)
-    plt.pause(0.001)
-    if(i == len(qc.pointset)-1):
-        plt.close('all')
-plt.show(block=True)
-plt.close('all')
-'''
-'''
-for i in range(1,len(qc.pointset)):
-    fig = px.line_3d(qc.pointset[i])
-    for d in range(0,4):
-        fig = go.Figure(data=go.Scatter3d(
-            x=qc.LiDARptset[i*4+d][0], y=qc.LiDARptset[i*4+d][1], z=qc.pointset[i][2],
-            marker=dict(
-                size=4,
-                color='blue'
-            )
-        ))
-    fig.show()
-'''
 x= [row[0] for row in qc.LiDARptset]
 y= [row[1] for row in qc.LiDARptset]
 z= [row[2] for row in qc.LiDARptset]
@@ -193,7 +152,7 @@ fig.update_layout(
     width=1800,
     height=1000,
     autosize=False,
-    
+
     scene=dict(
         xaxis_title='X (Meters)',
         yaxis_title='Y (Meters)',
