@@ -1,7 +1,8 @@
 from numpy import *  # imports all function so we don't have to use np.function()
 import math
 import numpy as np
-
+import pyqtgraph.opengl as gl
+import pyqtgraph as pg
 # class defines robot joint vertices and stores & plots vertex definition
 # in cartesian space relative to the origin of the base frame
 # those vertices get plotted within MPL's 3d visualization plotter using their plot function.
@@ -53,7 +54,9 @@ class Quadruped:
         x_data = [vector[0] for vector in self.body]
         y_data = [vector[1] for vector in self.body]
         z_data = [vector[2] for vector in self.body]
-        self.ax.plot(x_data, y_data, z_data, color=color)
+        #self.ax.plot(x_data, y_data, z_data, color=color)
+        pts = vstack([x_data, y_data, z_data]).transpose()
+        self.ax.w.addItem(gl.GLLinePlotItem(pos=pts, color=pg.glColor((4, 50)), width=1, antialias=True))
 
     @staticmethod
     def translate(delx, dely, delz):
@@ -84,7 +87,7 @@ class Quadruped:
         self.pitch = pitch
         self.roll = roll
         for i, vector in enumerate(self.body):
-            P = dot(Quadruped.rotate(self.yaw, self.pitch, self.roll), Quadruped.translate(self.body_reset[i][0],self.body_reset[i][1],self.body_reset[i][2]))
+            P = dot(Quadruped.translate(0, 0, self.body_reset[i][2]), dot(Quadruped.rotate(self.yaw, self.pitch, self.roll), Quadruped.translate(self.body_reset[i][0],self.body_reset[i][1],0)))
             self.body[i] = (P[0][3], P[1][3], P[2][3])
             #print((P[0][3], P[1][3], P[2][3]))
             #print(self.body_reset[i])
